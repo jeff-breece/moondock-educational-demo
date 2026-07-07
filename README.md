@@ -23,6 +23,18 @@ As always, think about the human first, then draft a sketch, talk to another hum
 
 ![Moondock Project - Design Challenge](./images/moondock.jpg)
 
+## Design Spec (for the AI and you)
+This is what you need to build to make sure both you, and the agents, don't drift. 
+**Start Here:** [Design Spec Documents](design/README.md)
+
+
+## Screens
+![Home](./images/home.png)
+![Search Results](./search-results.png)
+![Plan Trip](./images/plan-trip.png)
+![Trip History](./images/trip-history.png)
+![Trip Log](./images/trip-log.png)
+
 ## What's in here
 
 | Layer | Stack | Directory |
