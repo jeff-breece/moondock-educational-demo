@@ -81,7 +81,7 @@ This is the fastest way to see the full app.
 git clone https://github.com/jeff-breece/moondock-educational-demo.git
 cd moondock-educational-demo/campwatch-ui
 
-# 2. Install dependencies
+# 2. Install dependencies  ← must be run inside campwatch-ui/
 npm install
 
 # 3. Enable mock API
