@@ -7,7 +7,7 @@ demonstrate AI-assisted design engineering. It is the companion codebase to the
 ---
 
 ## Why did a guy with a distaste for AI do this?
-Once upon a time, shrtly after the dotcom bubble burst, I was at a DI conference during the, thankfully brief time period when I was doing data analytics. One guy was lamenting our web development demise over a beer and he told me a bright side version of our luck.
+Once upon a time, shortly after the dotcom bubble burst, I was at a DI conference during the, thankfully brief time period when I was doing data analytics. One guy was lamenting our web development demise over a beer and he told me a bright side version of our luck.
 
 > "Change is the only renewable resource in tech. Tools are ephemeral. Thus, learn the tool, keep your job."
 
@@ -23,14 +23,10 @@ As always, think about the human first, then draft a sketch, talk to another hum
 
 ![Moondock Project - Design Challenge](./images/moondock.jpg)
 
-## Design Spec (for the AI and you)
-This is what you need to build to make sure both you, and the agents, don't drift. 
-**Start Here:** [Design Spec Documents](design/README.md)
-
 
 ## Screens
 ![Home](./images/home.png)
-![Search Results](./search-results.png)
+![Search Results](./images/search-results.png)
 ![Plan Trip](./images/plan-trip.png)
 ![Trip History](./images/trip-history.png)
 ![Trip Log](./images/trip-log.png)
