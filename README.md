@@ -6,6 +6,23 @@ demonstrate AI-assisted design engineering. It is the companion codebase to the
 
 ---
 
+## Why did a guy with a distaste for AI do this?
+Once upon a time, shrtly after the dotcom bubble burst, I was at a DI conference during the, thankfully brief time period when I was doing data analytics. One guy was lamenting our web development demise over a beer and he told me a bright side version of our luck.
+
+> "Change is the only renewable resource in tech. Tools are ephemeral. Thus, learn the tool, keep your job."
+
+"Moondock," a personal utility I use for camping and hiking trips so I don't have to pay some service yet more of my cash. It's an artifact from my Cardinal Solutions Days as a purely UX exercise with a group of highly talented engineers - and I do have it running in my home lab now.
+
+The actual purpose of this is to help my crew to understand how to use Agentic development (better) with design boundaries, test frameworks, regression safe guards, and mock API data plus documentation standards.
+
+What follows is not design perfect, it's AI after all, but it does have my graybearded gnarled architect hands firmly steering this wheel.
+
+Spoiler: If you are still delusional that Agentic AI will **quickly** and **cheaply** solve your problem, you are wrong. THis still takes (human) skill, time, a lot of back and forth, a shit ton of planning and more.
+
+As always, think about the human first, then draft a sketch, talk to another human, and then start your planning.
+
+![Moondock Project - Design Challenge](./images/moondock.jpg)
+
 ## What's in here
 
 | Layer | Stack | Directory |
