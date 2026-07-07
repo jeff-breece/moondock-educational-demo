@@ -1,0 +1,30 @@
+# campwatch-preferences.yaml
+# Moondock profile — Jeff's primary camping preference seed.
+# This file is the source of truth for the default preference row seeded
+# into CampsitePreferences on first run. Edit weights here and re-seed
+# via POST /api/preferences or by re-running EF data seed.
+#
+# Weights: 0 (ignore) → 10 (highest priority)
+# The scorer maps each weight linearly to its category's max contribution.
+
+profiles:
+  - name: moondock
+    isActive: true
+
+    # Terrain / vibe weights
+    woodedWeight:  8    # Strong preference for wooded sites
+    remoteWeight:  9    # Very strong — want distance from crowds
+    privateWeight: 9    # Very strong — screened/secluded sites
+    hikingWeight:  7    # Moderate-high — trail access is a plus
+
+    # Water proximity (nice to have, not primary)
+    riverWeight: 4
+    lakeWeight:  3
+
+    # Search window
+    minNights:       2
+    maxNights:       5
+    searchWindowDays: 90
+
+    # Minimum score to trigger a Slack nudge (0–100)
+    nudgeThresholdScore: 65

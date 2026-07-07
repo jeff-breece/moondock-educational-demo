@@ -1,0 +1,66 @@
+version: "3.9"
+
+# CampWatch v2 — Docker Compose
+# Start:  docker compose up -d --build
+# Stop:   docker compose down
+# Logs:   docker compose logs -f
+#
+# Port assignments:
+#   campwatch-api  :8080  (C# .NET 9 Minimal API + SignalR)
+#   camply-bridge  :8088  (:8000 reserved for STT batch on lab-stt)
+#   campwatch-ui   :3001  (:3000 reserved for heartbeat-ui)
+#
+# DB: SQLite at /mnt/raid/data/campwatch.db — RAID-persisted, Tier 1 backup
+# No DB container needed. Swap to PostgreSQL: change Sqlite__DataSource
+# to a Npgsql connection string + swap EF Core provider package.
+
+services:
+  campwatch-api:
+    build:
+      context: .                          # campwatch/ as build context
+      dockerfile: CampWatch.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - /mnt/raid/data:/mnt/raid/data   # SQLite DB persisted on RAID
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Sqlite__DataSource: /mnt/raid/data/campwatch.db
+      CamplyBridge__BaseUrl: http://camply-bridge:8088
+      Rag__BaseUrl: http://host-gateway:8002   # lab-stt rag-service
+    extra_hosts:
+      - "host-gateway:host-gateway"
+    depends_on:
+      - camply-bridge
+    restart: unless-stopped
+
+  camply-bridge:
+    build:
+      context: ./camply-bridge
+      dockerfile: Dockerfile
+    ports:
+      - "8088:8088"
+    environment:
+      CAMPWATCH_API_URL: http://campwatch-api:8080
+      PORT: "8088"
+      # Camply polling cadence for --search-forever jobs.
+      # Do NOT go below 5 min — Recreation.gov and ODNR enforce per-IP rate limits.
+      # Camply's built-in default is 10 min; 15 min is safer for a home lab.
+      CAMPLY_POLLING_INTERVAL_IN_MINUTES: "15"
+    restart: unless-stopped
+
+  campwatch-ui:
+    build:
+      context: ./campwatch-ui
+      dockerfile: Dockerfile
+      args:
+        # Vite inlines these at build time (issue #203). Set them in .env.
+        VITE_CAMPWATCH_API_URL: ${VITE_CAMPWATCH_API_URL:-}
+        VITE_UNSPLASH_KEY: ${VITE_UNSPLASH_KEY:-}
+        VITE_HERO_QUERY: ${VITE_HERO_QUERY:-primitive tent camping forest wilderness}
+        VITE_APP_NAME: ${VITE_APP_NAME:-Moondock}
+    ports:
+      - "3001:80"
+    depends_on:
+      - campwatch-api
+    restart: unless-stopped
